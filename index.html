@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header: title + saved count -->
+  <header class="header">
+    <div>
+      <h1>Product Explorer</h1>
+      <p class="tagline">Search products, save your favourites, and they stay after you refresh.</p>
+    </div>
+    <p id="favCount" class="fav-count">Saved: 0</p>
+  </header>
+
+  <!-- Search, filter and sort controls -->
+  <section class="controls">
+    <input type="text" id="searchInput" placeholder="Search by product name...">
+
+    <select id="categorySelect">
+      <option value="all">All categories</option>
+    </select>
+
+    <select id="sortSelect">
+      <option value="default">Sort: Default</option>
+      <option value="low">Price: Low to High</option>
+      <option value="high">Price: High to Low</option>
+    </select>
+
+    <button id="favOnlyBtn" class="control-btn">Show saved only</button>
+  </section>
+
+  <!-- Loading / error / empty messages come here -->
+  <p id="statusMsg" class="status"></p>
+  <button id="retryBtn" class="control-btn retry" hidden>Try again</button>
+
+  <!-- Product cards are added here by JavaScript -->
+  <main id="productList" class="grid"></main>
+
+  <!-- Details popup (hidden by default) -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-box">
+      <button id="closeModal" class="close-btn" aria-label="Close details">&times;</button>
+      <img id="modalImg" src="" alt="">
+      <h2 id="modalTitle"></h2>
+      <p id="modalCategory" class="category"></p>
+      <p id="modalDesc"></p>
+      <p id="modalPrice" class="price"></p>
+      <p id="modalRating"></p>
+      <p id="modalStock"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+/* ---------- Basic reset ar colors ---------- */
+* {
+  box-sizing: border-box;   /* padding dile-o width bere jabe na */
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --ink: #2a1740;           /* lekhar gaaro color */
+  --muted: #6b5b7e;         /* halka lekhar color */
+  --line: #eadcf9;          /* border er halka color */
+  --pink: #ff5f8d;          /* gradient er shuru */
+  --violet: #a855f7;        /* gradient er majhkhan */
+  --indigo: #4f46e5;        /* gradient er shesh */
+  --brand: linear-gradient(135deg, #ff5f8d, #a855f7 55%, #4f46e5); /* main gradient, bar bar use hobe */
+}
+
+[hidden] {
+  display: none !important; /* hidden attribute thakle ekdom lukiye dao */
+}
+
+body {
+  font-family: "Figtree", Arial, sans-serif;
+  color: var(--ink);
+  line-height: 1.5;
+  min-height: 100vh;
+  /* pura page er halka gradient background */
+  background: linear-gradient(160deg, #fdf2f8 0%, #f5f3ff 45%, #eff6ff 100%);
+  background-attachment: fixed;  /* scroll korleo background ek jaygay thake */
+}
+
+/* ---------- Header (gradient banner) ---------- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 44px 5% 80px;          /* niche beshi padding, karon controls bar upore uthe ashbe */
+  background: var(--brand);       /* gradient banner */
+  color: #fff;
+  border-radius: 0 0 32px 32px;   /* niche duto kon gol */
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.tagline {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.fav-count {
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.2);          /* achhoto shada */
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(6px);                    /* pechoner jinish jhapsa */
+}
+
+/* ---------- Controls (search, select, buttons) ---------- */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: -40px 5% 0;             /* negative margin: banner er upor uthe thake */
+  padding: 14px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 12px 32px rgba(124, 58, 237, 0.18);  /* beguni chaya */
+  position: relative;
+}
+
+.controls input,
+.controls select,
+.control-btn {
+  padding: 11px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.controls input:focus,
+.controls select:focus {
+  outline: none;
+  border-color: var(--violet);
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.25);    /* focus korle beguni ring */
+}
+
+#searchInput {
+  flex: 1 1 240px;                /* baki jaygar shobta nibe */
+}
+
+.control-btn {
+  cursor: pointer;
+  font-weight: 600;
+  color: #6d28d9;
+}
+
+.control-btn:hover {
+  background: #f5f3ff;
+}
+
+.control-btn.active {
+  background: var(--brand);       /* "saved only" on thakle gradient */
+  border-color: transparent;
+  color: #fff;
+}
+
+.retry {
+  margin: 0 5% 12px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--violet);
+  outline-offset: 2px;
+}
+
+/* ---------- Status message (loading / error / empty) ---------- */
+.status {
+  padding: 18px 5% 4px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* ---------- Product grid ar cards ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 22px;
+  padding: 14px 5% 56px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);                          /* upore uthbe */
+  box-shadow: 0 16px 34px rgba(236, 72, 153, 0.25);     /* golapi glow */
+}
+
+.card img {
+  width: 100%;
+  height: 210px;
+  object-fit: contain;
+  background: linear-gradient(135deg, #fdf2f8, #ede9fe); /* chobir pechone gradient */
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px;
+  flex: 1;
+}
+
+.card-body h3 {
+  font-size: 1.05rem;
+}
+
+/* category chhoto pill er moto */
+.category {
+  width: fit-content;
+  padding: 2px 12px;
+  border-radius: 999px;
+  background: #f5f3ff;
+  color: #7c3aed;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+/* dam: gradient color er lekha */
+.price {
+  font-size: 1.3rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #ec4899, #7c3aed);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.card-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;               /* button duto shobsomoy card er niche thake */
+  padding-top: 10px;
+}
+
+.card-buttons button {
+  flex: 1;
+  padding: 9px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  color: #6d28d9;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.card-buttons button:hover {
+  background: #f5f3ff;
+}
+
+.card-buttons .fav-btn {
+  color: #db2777;
+  border-color: #fbcfe8;
+}
+
+.card-buttons .fav-btn:hover {
+  background: #fdf2f8;
+}
+
+.card-buttons .fav-btn.active {
+  background: linear-gradient(135deg, #ff5f8d, #a855f7);  /* saved hole gradient */
+  border-color: transparent;
+  color: #fff;
+}
+
+/* ---------- Details popup ---------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(42, 23, 64, 0.65);
+  backdrop-filter: blur(4px);
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-box {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow: auto;
+  padding: 24px 20px 20px;
+  background: #fff;
+  border-radius: 20px;
+}
+
+/* popup er upore gradient patti */
+.modal-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--brand);
+}
+
+.modal-box img {
+  width: 100%;
+  height: 240px;
+  object-fit: contain;
+  background: linear-gradient(135deg, #fdf2f8, #ede9fe);
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.modal-box h2 {
+  margin-bottom: 4px;
+}
+
+.modal-box p {
+  margin-top: 8px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: var(--brand);
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/* ---------- Chhoto screen (phone) ---------- */
+@media (max-width: 600px) {
+  .header h1 {
+    font-size: 1.8rem;
+  }
+
+  .controls select,
+  .control-btn {
+    flex: 1 1 100%;
+  }
+}
